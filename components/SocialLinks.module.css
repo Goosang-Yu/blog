@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+    /* Push to bottom */
+    padding-top: 2rem;
+}
+
+.link {
+    color: #6c757d;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link:hover {
+    color: #000;
+}

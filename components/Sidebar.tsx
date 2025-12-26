@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styles from './Sidebar.module.css';
 import SidebarSearch from './SidebarSearch';
+import SocialLinks from './SocialLinks';
 
 export default function Sidebar() {
     return (
@@ -23,6 +24,7 @@ export default function Sidebar() {
                 <Link href="/categories/dev" className={styles.navItem}>Dev</Link>
                 <Link href="/categories/math" className={styles.navItem}>Math</Link>
             </div>
+            <SocialLinks />
         </aside>
     );
 }

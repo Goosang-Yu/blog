@@ -2,7 +2,12 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
-import html from 'remark-html';
+import remarkMath from 'remark-math';
+import remarkRehype from 'remark-rehype';
+import rehypeKatex from 'rehype-katex';
+import rehypeStringify from 'rehype-stringify';
+import rehypeSlug from 'rehype-slug';
+import GithubSlugger from 'github-slugger';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
@@ -15,6 +20,7 @@ export interface PostData {
     title: string;
     description?: string;
     contentHtml?: string;
+    headings?: { text: string; id: string; depth: number }[];
     [key: string]: any;
 }
 
@@ -102,8 +108,26 @@ export async function getPostData(slug: string[]): Promise<PostData> {
 
     const matterResult = matter(fileContents);
 
+    // Extract headings
+    const slugger = new GithubSlugger();
+    const headings: { text: string; id: string; depth: number }[] = [];
+    const lines = matterResult.content.split(/\r?\n/);
+    lines.forEach(line => {
+        const match = line.match(/^(#{1,6})\s+(.*)$/);
+        if (match) {
+            const depth = match[1].length;
+            const text = match[2];
+            const id = slugger.slug(text);
+            headings.push({ text, id, depth });
+        }
+    });
+
     const processedContent = await remark()
-        .use(html)
+        .use(remarkMath)
+        .use(remarkRehype)
+        .use(rehypeSlug)
+        .use(rehypeKatex)
+        .use(rehypeStringify)
         .process(matterResult.content);
     const contentHtml = processedContent.toString();
 
@@ -115,6 +139,7 @@ export async function getPostData(slug: string[]): Promise<PostData> {
         slug: slugStr,
         category,
         contentHtml,
+        headings,
         tags: matterResult.data.tags || [],
         ...(matterResult.data as { date: string; title: string }),
     };

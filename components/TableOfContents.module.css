@@ -1,0 +1,56 @@
+.toc {
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    width: 200px;
+    padding-left: 1rem;
+    border-left: 1px solid #e9ecef;
+    display: none;
+}
+
+@media (min-width: 1200px) {
+    .toc {
+        display: block;
+    }
+}
+
+
+.title {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.item {
+    margin-bottom: 0.5rem;
+}
+
+.nested {
+    padding-left: 1rem;
+}
+
+.link {
+    text-decoration: none;
+    color: #666;
+    font-size: 0.9rem;
+    transition: color 0.1s;
+    display: block;
+    line-height: 1.4;
+}
+
+.link:hover {
+    color: #000;
+}
+
+.active {
+    color: #0070f3;
+    font-weight: 600;
+}
