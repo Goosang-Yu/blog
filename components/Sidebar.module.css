@@ -1,0 +1,92 @@
+.sidebar {
+  width: 300px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-right: 1px solid #e9ecef;
+}
+
+.profile {
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  margin-bottom: 1rem;
+}
+
+.avatarPlaceholder {
+  width: 80px;
+  height: 80px;
+  background-color: #333;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+}
+
+.title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.description {
+  color: #6c757d;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.navItem {
+  text-decoration: none;
+  color: #495057;
+  padding: 0.5rem 0;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.navItem:hover {
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 1px solid #e9ecef;
+    padding: 1.5rem;
+  }
+  
+  .profile {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .nav {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+}
