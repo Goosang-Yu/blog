@@ -8,13 +8,15 @@ export default function Home() {
     <section>
       <h1>Recent Posts</h1>
       <div>
-        {allPostsData.map(({ id, date, title, description }) => (
+        {allPostsData.map(({ id, category, date, title, description, tags }) => (
           <PostItem
             key={id}
             id={id}
+            category={category}
             date={date}
             title={title}
             description={description}
+            tags={tags}
           />
         ))}
       </div>
