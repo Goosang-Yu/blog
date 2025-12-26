@@ -4,7 +4,7 @@ import 'katex/dist/katex.min.css';
 import Sidebar from '@/components/Sidebar';
 
 export const metadata: Metadata = {
-  title: 'My Tech Blog',
+  title: 'Goosang\'s Blog',
   description: 'A blog about technology and learning.',
 };
 

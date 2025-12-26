@@ -7,9 +7,9 @@ export default function Contact() {
             </p>
             <h2>Get in Touch</h2>
             <ul>
-                <li><strong>Email:</strong> <a href="mailto:example@email.com">example@email.com</a></li>
-                <li><strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">github.com/yourusername</a></li>
-                <li><strong>Twitter:</strong> <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">@yourusername</a></li>
+                <li><strong>Email:</strong> <a href="mailto:gsyu93@gmail.com" target="_blank" rel="noopener noreferrer">gsyu93@gmail.com</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/Goosang-Yu" target="_blank" rel="noopener noreferrer">github.com/Goosang-Yu</a></li>
+                <li><strong>X (Twitter):</strong> <a href="https://x.com/Goosang_Yu" target="_blank" rel="noopener noreferrer">@Goosang_Yu</a></li>
             </ul>
         </article>
     );

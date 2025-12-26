@@ -1,5 +1,6 @@
 import { getAllPostIds, getPostData } from '@/lib/posts';
 import TableOfContents from '@/components/TableOfContents';
+import GiscusComments from '@/components/GiscusComments';
 
 export async function generateStaticParams() {
     const paths = getAllPostIds();
@@ -23,6 +24,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string[
                     className="markdown-content"
                     dangerouslySetInnerHTML={{ __html: postData.contentHtml || '' }}
                 />
+                <GiscusComments />
             </div>
             <TableOfContents headings={postData.headings || []} />
         </article>

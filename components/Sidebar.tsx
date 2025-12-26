@@ -8,9 +8,9 @@ export default function Sidebar() {
         <aside className={styles.sidebar}>
             <div className={styles.profile}>
                 <div className={styles.avatar}>
-                    <div className={styles.avatarPlaceholder}>B</div>
+                    <div className={styles.avatarPlaceholder}>G.Yu</div>
                 </div>
-                <h1 className={styles.title}><Link href="/">My Blog</Link></h1>
+                <h1 className={styles.title}><Link href="/">Goosang Yu</Link></h1>
                 <p className={styles.description}>Documenting my learning journey.</p>
             </div>
             <SidebarSearch />
