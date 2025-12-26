@@ -7,17 +7,17 @@ export default function GiscusComments() {
         <div style={{ marginTop: '4rem', borderTop: '1px solid #eaeaea', paddingTop: '2rem' }}>
             <Giscus
                 id="comments"
-                repo="Goosang-Yu/Goosang-Yu.github.io" // Replace with your actual repo
-                repoId="R_..." // Replace with your repoId
-                category="Announcements"
-                categoryId="DIC_..." // Replace with your categoryId
+                repo="Goosang-Yu/blog"
+                repoId="R_kgDOQvTMoA"
+                category="Comments"
+                categoryId="DIC_kwDOQvTMoM4C0RSa"
                 mapping="pathname"
                 term="Welcome to my blog!"
                 reactionsEnabled="1"
                 emitMetadata="0"
-                inputPosition="bottom"
-                theme="light"
-                lang="ko"
+                inputPosition="top"
+                theme="preferred_color_scheme"
+                lang="en"
                 loading="lazy"
             />
         </div>

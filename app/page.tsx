@@ -45,8 +45,8 @@ async function getRecentComments() {
       body: JSON.stringify({
         query,
         variables: {
-          owner: 'Goosang-Yu', // Replace with dynamic if needed
-          name: 'Goosang-Yu.github.io',
+          owner: 'Goosang-Yu',
+          name: 'blog',
         },
       }),
       next: { revalidate: 3600 }, // Cache for 1 hour
