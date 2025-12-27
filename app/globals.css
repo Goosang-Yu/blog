@@ -67,3 +67,23 @@ strong,
 b {
   font-weight: 700;
 }
+
+/* Markdown Content Styles */
+.markdown-content img {
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.markdown-content p {
+  margin-bottom: 1.2rem;
+}
+
+.markdown-content h2 {
+  margin-top: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}

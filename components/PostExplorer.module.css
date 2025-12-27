@@ -1,0 +1,164 @@
+.explorer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.searchContainer {
+    margin-bottom: 2.5rem;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    font-size: 1.1rem;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    background: #fdfdfd;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #0070f3;
+    box-shadow: 0 4px 12px rgba(0, 112, 243, 0.1);
+    background: #fff;
+}
+
+.filterSection {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.filterGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.filterLabel {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #888;
+    margin-right: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    min-width: 80px;
+}
+
+.chip {
+    padding: 0.5rem 1rem;
+    border-radius: 99px;
+    background: #f0f0f0;
+    color: #666;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.chip:hover {
+    background: #e5e5e5;
+}
+
+.chipActive {
+    background: #0070f3;
+    color: white;
+    border-color: #0070f3;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.postCount {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.sortSelect {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    background: white;
+    font-size: 0.9rem;
+    color: #444;
+    cursor: pointer;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.noResults {
+    text-align: center;
+    padding: 4rem 0;
+    color: #999;
+}
+
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+/* Sidebar Specific Styles */
+.sidebarLayout {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+    max-width: none;
+    width: 100%;
+}
+
+.sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 6rem;
+}
+
+.mainContent {
+    flex: 1;
+    min-width: 0;
+}
+
+.mainTitle {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: #111;
+}
+
+.mainDescription {
+    color: #666;
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+}
+
+@media (max-width: 1024px) {
+    .sidebarLayout {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: static;
+        top: 0;
+    }
+}

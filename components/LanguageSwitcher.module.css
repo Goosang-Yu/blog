@@ -1,0 +1,116 @@
+.container {
+    position: relative;
+}
+
+.trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: white;
+    border: 1px solid #e9ecef;
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #495057;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.trigger:hover {
+    border-color: #adb5bd;
+    background-color: #f8f9fa;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.activeLang {
+    min-width: 1.5rem;
+    text-align: left;
+}
+
+.chevron {
+    transition: transform 0.2s ease;
+    color: #adb5bd;
+}
+
+.chevronOpen {
+    transform: rotate(180deg);
+}
+
+.dropdown {
+    position: absolute;
+    bottom: calc(100% + 0.5rem);
+    left: 0;
+    width: 100%;
+    min-width: 140px;
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 0.4rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    z-index: 1000;
+    animation: slideUp 0.2s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.option {
+    background: none;
+    border: none;
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #495057;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.15s;
+}
+
+.option:hover {
+    background-color: #f1f3f5;
+    color: #000;
+}
+
+.optionActive {
+    background-color: #f8f9fa;
+    color: #0070f3;
+    font-weight: 700;
+    position: relative;
+}
+
+.optionActive::after {
+    content: "✓";
+    position: absolute;
+    right: 0.8rem;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        padding-top: 0;
+    }
+
+    .dropdown {
+        bottom: auto;
+        top: calc(100% + 0.5rem);
+    }
+}

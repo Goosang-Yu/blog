@@ -12,16 +12,34 @@ import GithubSlugger from 'github-slugger';
 const postsDirectory = path.join(process.cwd(), 'posts');
 
 export interface PostData {
-    id: string; // "category/slug"
+    id: string; // "folder/slug"
     slug: string;
     category: string;
     tags?: string[];
+    field?: string;
+    topic?: string[];
     date: string;
     title: string;
     description?: string;
+    thumbnail?: string;
+    lang?: string; // "ko" or "en"
+    translationId?: string; // Links translations
     contentHtml?: string;
     headings?: { text: string; id: string; depth: number }[];
     [key: string]: any;
+}
+
+// Helper to extract the first image URL from markdown
+function extractFirstImage(content: string): string | undefined {
+    // Match markdown image syntax ![alt](url)
+    const mdMatch = content.match(/!\[.*?\]\((.*?)\)/);
+    if (mdMatch) return mdMatch[1];
+
+    // Match HTML img tag <img src="url" ...>
+    const htmlMatch = content.match(/<img.*?src=["'](.*?)["'].*?>/);
+    if (htmlMatch) return htmlMatch[1];
+
+    return undefined;
 }
 
 // Helper to recursively get all files
@@ -49,15 +67,9 @@ export function getSortedPostsData(): PostData[] {
     const allFiles = getAllFiles(postsDirectory);
 
     const allPostsData = allFiles.map((fullPath) => {
-        // Get relative path from postsDirectory to get id/slug structure
-        // e.g. "dev/hello-world.md"
         const relativePath = path.relative(postsDirectory, fullPath);
-
-        // id = "dev/hello-world"
         const id = relativePath.replace(/\.md$/, '').replace(/\\/g, '/');
-
-        // category = "dev", slug = "hello-world"
-        const [category, ...slugParts] = id.split('/');
+        const [folder, ...slugParts] = id.split('/');
         const slug = slugParts.join('/');
 
         const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -66,8 +78,13 @@ export function getSortedPostsData(): PostData[] {
         return {
             id,
             slug,
-            category: category || 'uncategorized',
+            category: matterResult.data.category || folder || 'uncategorized',
             tags: matterResult.data.tags || [],
+            field: matterResult.data.field || "",
+            topic: matterResult.data.topic || [],
+            thumbnail: matterResult.data.thumbnail || extractFirstImage(matterResult.content),
+            lang: matterResult.data.lang || 'ko',
+            translationId: matterResult.data.translationId || id.split('/').pop(),
             ...(matterResult.data as { date: string; title: string }),
         };
     });
@@ -131,16 +148,21 @@ export async function getPostData(slug: string[]): Promise<PostData> {
         .process(matterResult.content);
     const contentHtml = processedContent.toString();
 
-    const category = slug[0];
+    const folder = slug[0];
     const slugStr = slug.slice(1).join('/');
 
     return {
         id: relPath,
         slug: slugStr,
-        category,
+        category: matterResult.data.category || folder,
+        tags: matterResult.data.tags || [],
+        field: matterResult.data.field || "",
+        topic: matterResult.data.topic || [],
+        thumbnail: matterResult.data.thumbnail || extractFirstImage(matterResult.content),
+        lang: matterResult.data.lang || 'ko',
+        translationId: matterResult.data.translationId || slug.join('-'),
         contentHtml,
         headings,
-        tags: matterResult.data.tags || [],
         ...(matterResult.data as { date: string; title: string }),
     };
 }
@@ -174,6 +196,38 @@ export function getPostsByTag(tag: string): PostData[] {
     return allPosts.filter(post => post.tags && post.tags.includes(tag));
 }
 
+export function getAllFields(): string[] {
+    const allPosts = getSortedPostsData();
+    const fields = new Set<string>();
+    allPosts.forEach(post => {
+        if (post.field) {
+            fields.add(post.field);
+        }
+    });
+    return Array.from(fields);
+}
+
+export function getPostsByField(field: string): PostData[] {
+    const allPosts = getSortedPostsData();
+    return allPosts.filter(post => post.field === field);
+}
+
+export function getAllTopics(): string[] {
+    const allPosts = getSortedPostsData();
+    const topics = new Set<string>();
+    allPosts.forEach(post => {
+        if (post.topic) {
+            post.topic.forEach((topic: string) => topics.add(topic));
+        }
+    });
+    return Array.from(topics);
+}
+
+export function getPostsByTopic(topic: string): PostData[] {
+    const allPosts = getSortedPostsData();
+    return allPosts.filter(post => post.topic && post.topic.includes(topic));
+}
+
 export function getPostsForSearch(): PostData[] {
     if (!fs.existsSync(postsDirectory)) {
         return [];
@@ -184,7 +238,7 @@ export function getPostsForSearch(): PostData[] {
     const allPostsData = allFiles.map((fullPath) => {
         const relativePath = path.relative(postsDirectory, fullPath);
         const id = relativePath.replace(/\.md$/, '').replace(/\\/g, '/');
-        const [category, ...slugParts] = id.split('/');
+        const [folder, ...slugParts] = id.split('/');
         const slug = slugParts.join('/');
 
         const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -193,9 +247,11 @@ export function getPostsForSearch(): PostData[] {
         return {
             id,
             slug,
-            category: category || 'uncategorized',
-            contentHtml: matterResult.content, // Pass raw markdown for search
+            category: matterResult.data.category || folder || 'uncategorized',
             tags: matterResult.data.tags || [],
+            field: matterResult.data.field || "",
+            topic: matterResult.data.topic || [],
+            contentHtml: matterResult.content, // Pass raw markdown for search
             ...(matterResult.data as { date: string; title: string }),
         };
     });

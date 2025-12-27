@@ -1,9 +1,6 @@
 .container {
     display: flex;
     gap: 1rem;
-    margin-top: auto;
-    /* Push to bottom */
-    padding-top: 2rem;
 }
 
 .link {
