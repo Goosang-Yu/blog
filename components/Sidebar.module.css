@@ -79,6 +79,20 @@
   color: #000;
 }
 
+.categoriesNav {
+  margin-top: 2rem;
+}
+
+.categoryLabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #6c757d;
+  padding: 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
 .footer {
   margin-top: auto;
   padding-top: 2rem;
@@ -110,11 +124,19 @@
     flex-direction: row;
     justify-content: center;
     gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .categoriesNav {
+    margin-top: 1.5rem;
   }
 
   .footer {
     margin-top: 2rem;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     padding-top: 0;
   }
 }

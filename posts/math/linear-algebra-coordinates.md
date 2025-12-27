@@ -5,7 +5,6 @@ description: "선형대수학의 핵심 개념인 기저(Basis)와 좌표계(Coo
 category: "math"
 tags: ["math", "linear-algebra"]
 field: "수학"
-topic: ["행렬", "기저"]
 lang: "ko"
 translationId: "linear-algebra-basis"
 ---

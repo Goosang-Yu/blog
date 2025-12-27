@@ -102,13 +102,6 @@
 }
 
 @media (max-width: 768px) {
-    .container {
-        margin-top: 2rem;
-        display: flex;
-        justify-content: center;
-        padding-top: 0;
-    }
-
     .dropdown {
         bottom: auto;
         top: calc(100% + 0.5rem);

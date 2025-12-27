@@ -17,7 +17,6 @@ export interface PostData {
     category: string;
     tags?: string[];
     field?: string;
-    topic?: string[];
     date: string;
     title: string;
     description?: string;
@@ -81,7 +80,6 @@ export function getSortedPostsData(): PostData[] {
             category: matterResult.data.category || folder || 'uncategorized',
             tags: matterResult.data.tags || [],
             field: matterResult.data.field || "",
-            topic: matterResult.data.topic || [],
             thumbnail: matterResult.data.thumbnail || extractFirstImage(matterResult.content),
             lang: matterResult.data.lang || 'ko',
             translationId: matterResult.data.translationId || id.split('/').pop(),
@@ -157,7 +155,6 @@ export async function getPostData(slug: string[]): Promise<PostData> {
         category: matterResult.data.category || folder,
         tags: matterResult.data.tags || [],
         field: matterResult.data.field || "",
-        topic: matterResult.data.topic || [],
         thumbnail: matterResult.data.thumbnail || extractFirstImage(matterResult.content),
         lang: matterResult.data.lang || 'ko',
         translationId: matterResult.data.translationId || slug.join('-'),
@@ -212,21 +209,7 @@ export function getPostsByField(field: string): PostData[] {
     return allPosts.filter(post => post.field === field);
 }
 
-export function getAllTopics(): string[] {
-    const allPosts = getSortedPostsData();
-    const topics = new Set<string>();
-    allPosts.forEach(post => {
-        if (post.topic) {
-            post.topic.forEach((topic: string) => topics.add(topic));
-        }
-    });
-    return Array.from(topics);
-}
 
-export function getPostsByTopic(topic: string): PostData[] {
-    const allPosts = getSortedPostsData();
-    return allPosts.filter(post => post.topic && post.topic.includes(topic));
-}
 
 export function getPostsForSearch(): PostData[] {
     if (!fs.existsSync(postsDirectory)) {
@@ -250,7 +233,6 @@ export function getPostsForSearch(): PostData[] {
             category: matterResult.data.category || folder || 'uncategorized',
             tags: matterResult.data.tags || [],
             field: matterResult.data.field || "",
-            topic: matterResult.data.topic || [],
             contentHtml: matterResult.content, // Pass raw markdown for search
             ...(matterResult.data as { date: string; title: string }),
         };

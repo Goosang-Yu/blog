@@ -27,9 +27,10 @@ export default function Sidebar() {
             <nav className={styles.nav}>
                 <Link href="/" className={styles.navItem}>{t.nav.home}</Link>
                 <Link href="/about" className={styles.navItem}>{t.nav.about}</Link>
+                <Link href="/tags" className={styles.navItem}>{t.nav.tags}</Link>
             </nav>
-            <div className={styles.nav} style={{ marginTop: '2rem' }}>
-                <span className={styles.description} style={{ fontSize: '0.8rem', fontWeight: 700 }}>
+            <div className={`${styles.nav} ${styles.categoriesNav}`}>
+                <span className={styles.categoryLabel}>
                     {t.nav.categories}
                 </span>
                 <Link href="/categories/dev" className={styles.navItem}>Dev</Link>

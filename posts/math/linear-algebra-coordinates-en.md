@@ -5,7 +5,6 @@ description: "A summary of the core concepts of Linear Algebra: Basis and Coordi
 category: "math"
 tags: ["math", "linear-algebra"]
 field: "Mathematics"
-topic: ["Matrix", "Basis"]
 lang: "en"
 translationId: "linear-algebra-basis"
 ---

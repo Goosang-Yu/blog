@@ -5,7 +5,6 @@ description: "세포 내 단백질 항상성 유지를 위한 데그론 매개 �
 category: "biology"
 tags: ["biology", "protein", "degron"]
 field: "생물학"
-topic: ["단백질 분해", "품질 관리"]
 lang: "ko"
 translationId: "protein-degron-degradation"
 ---

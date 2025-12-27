@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.searchContainer {
+    margin-bottom: 3rem;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    background: #fdfdfd;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #0070f3;
+    box-shadow: 0 4px 12px rgba(0, 112, 243, 0.1);
+    background: #fff;
+}
+
+.tagGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.tagCard {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.tagCard:hover {
+    border-color: #0070f3;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 112, 243, 0.08);
+}
+
+.tagName {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 0.2rem;
+}
+
+.tagCount {
+    font-size: 0.75rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.tagCard:hover .tagName {
+    color: #0070f3;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 4rem 0;
+    color: #888;
+}
+
+@media (max-width: 640px) {
+    .tagGrid {
+        grid-template-columns: 1fr;
+    }
+}

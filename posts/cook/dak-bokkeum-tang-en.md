@@ -5,7 +5,6 @@ description: "Master the art of making the perfect Korean spicy chicken stew at 
 category: "cook"
 tags: ["cook", "korean-food", "chicken"]
 field: "Cooking"
-topic: ["Korean Food", "Recipe"]
 lang: "en"
 translationId: "dak-bokkeum-tang"
 thumbnail: "/images/posts/dak-bokkeum-tang.png"

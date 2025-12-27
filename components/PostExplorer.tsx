@@ -12,7 +12,6 @@ interface Props {
     categories: string[];
     tags: string[];
     fields: string[];
-    topics: string[];
     initialCategory?: string;
     layout?: 'horizontal' | 'sidebar';
     title?: string;
@@ -24,7 +23,6 @@ export default function PostExplorer({
     categories,
     tags,
     fields,
-    topics,
     initialCategory,
     layout = 'horizontal',
     title,
@@ -36,8 +34,8 @@ export default function PostExplorer({
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState<string | null>(initialCategory || null);
     const [selectedField, setSelectedField] = useState<string | null>(null);
-    const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
-    const [selectedYear, setSelectedYear] = useState<string | null>(null);
+    const [startYear, setStartYear] = useState('');
+    const [endYear, setEndYear] = useState('');
     const [sortBy, setSortBy] = useState<'newest' | 'oldest'>('newest');
 
     const filteredPosts = useMemo(() => {
@@ -54,8 +52,7 @@ export default function PostExplorer({
                     (post.description && post.description.toLowerCase().includes(q)) ||
                     (post.category && post.category.toLowerCase().includes(q)) ||
                     (post.field && post.field.toLowerCase().includes(q)) ||
-                    (post.tags && post.tags.some(t => t.toLowerCase().includes(q))) ||
-                    (post.topic && post.topic.some(t => t.toLowerCase().includes(q)));
+                    (post.tags && post.tags.some(t => t.toLowerCase().includes(q)));
 
                 // Filter by Category
                 const matchesCategory = !selectedCategory || post.category === selectedCategory;
@@ -63,29 +60,27 @@ export default function PostExplorer({
                 // Filter by Field
                 const matchesField = !selectedField || post.field === selectedField;
 
-                // Filter by Topic (Only topic)
-                const matchesTopic = !selectedTopic || (post.topic && post.topic.includes(selectedTopic));
+
 
                 // Year filter
-                const matchesYear = !selectedYear || new Date(post.date).getFullYear().toString() === selectedYear;
+                const postYear = new Date(post.date).getFullYear();
+                const sYear = startYear ? parseInt(startYear) : null;
+                const eYear = endYear ? parseInt(endYear) : null;
 
-                return matchesSearch && matchesCategory && matchesField && matchesTopic && matchesYear;
+                const matchesYear =
+                    (!sYear || isNaN(sYear) || postYear >= sYear) &&
+                    (!eYear || isNaN(eYear) || postYear <= eYear);
+
+                return matchesSearch && matchesCategory && matchesField && matchesYear;
             })
             .sort((a, b) => {
                 const dateA = new Date(a.date).getTime();
                 const dateB = new Date(b.date).getTime();
                 return sortBy === 'newest' ? dateB - dateA : dateA - dateB;
             });
-    }, [allPosts, searchQuery, selectedCategory, selectedField, selectedTopic, selectedYear, sortBy, lang]);
+    }, [allPosts, searchQuery, selectedCategory, selectedField, startYear, endYear, sortBy, lang]);
 
-    const years = useMemo(() => {
-        const y = new Set<string>();
-        allPosts.filter(p => p.lang === lang).forEach(p => {
-            const year = new Date(p.date).getFullYear().toString();
-            y.add(year);
-        });
-        return Array.from(y).sort((a, b) => b.localeCompare(a));
-    }, [allPosts, lang]);
+
 
     const availableCategories = useMemo(() => {
         const c = new Set<string>();
@@ -99,11 +94,7 @@ export default function PostExplorer({
         return Array.from(f).sort();
     }, [allPosts, lang]);
 
-    const availableTopics = useMemo(() => {
-        const t = new Set<string>();
-        allPosts.filter(p => p.lang === lang).forEach(p => p.topic?.forEach(item => t.add(item)));
-        return Array.from(t).sort();
-    }, [allPosts, lang]);
+
 
     const filterSection = (
         <div className={styles.filterSection}>
@@ -147,42 +138,33 @@ export default function PostExplorer({
                 ))}
             </div>
 
-            <div className={styles.filterGroup}>
-                <span className={styles.filterLabel}>{t.explorer.filters.topic}</span>
-                <button
-                    className={`${styles.chip} ${!selectedTopic ? styles.chipActive : ''}`}
-                    onClick={() => setSelectedTopic(null)}
-                >
-                    {t.explorer.all}
-                </button>
-                {availableTopics.map((topic) => (
-                    <button
-                        key={topic}
-                        className={`${styles.chip} ${selectedTopic === topic ? styles.chipActive : ''}`}
-                        onClick={() => setSelectedTopic(topic)}
-                    >
-                        #{topic}
-                    </button>
-                ))}
-            </div>
+
 
             <div className={styles.filterGroup}>
                 <span className={styles.filterLabel}>{t.explorer.filters.year}</span>
-                <button
-                    className={`${styles.chip} ${!selectedYear ? styles.chipActive : ''}`}
-                    onClick={() => setSelectedYear(null)}
-                >
-                    {t.explorer.all}
-                </button>
-                {years.map((year) => (
+                <div className={styles.yearRangeContainer}>
+                    <input
+                        type="number"
+                        placeholder={t.explorer.filters.startYear}
+                        className={styles.yearInput}
+                        value={startYear}
+                        onChange={(e) => setStartYear(e.target.value)}
+                    />
+                    <span className={styles.rangeDivider}>~</span>
+                    <input
+                        type="number"
+                        placeholder={t.explorer.filters.endYear}
+                        className={styles.yearInput}
+                        value={endYear}
+                        onChange={(e) => setEndYear(e.target.value)}
+                    />
                     <button
-                        key={year}
-                        className={`${styles.chip} ${selectedYear === year ? styles.chipActive : ''}`}
-                        onClick={() => setSelectedYear(year)}
+                        className={styles.resetButton}
+                        onClick={() => { setStartYear(''); setEndYear(''); }}
                     >
-                        {year}
+                        {t.explorer.all}
                     </button>
-                ))}
+                </div>
             </div>
         </div>
     );
@@ -209,7 +191,6 @@ export default function PostExplorer({
                         category={post.category}
                         tags={post.tags}
                         field={post.field}
-                        topic={post.topic}
                         date={post.date}
                         title={post.title}
                         description={post.description}

@@ -162,3 +162,61 @@
         top: 0;
     }
 }
+
+.yearRangeContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.yearInput {
+    width: 90px;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    background: #fdfdfd;
+}
+
+.yearInput:focus {
+    outline: none;
+    border-color: #0070f3;
+    box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.1);
+    background: white;
+}
+
+/* Hide spin buttons */
+.yearInput::-webkit-outer-spin-button,
+.yearInput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.yearInput[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.rangeDivider {
+    color: #aaa;
+    font-weight: 500;
+}
+
+.resetButton {
+    margin-left: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    background: #f8f9fa;
+    color: #666;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.resetButton:hover {
+    background: #e9ecef;
+    color: #333;
+}

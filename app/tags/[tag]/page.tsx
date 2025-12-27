@@ -1,22 +1,22 @@
-import { getPostsByTopic, getAllTopics } from '@/lib/posts';
+import { getPostsByTag, getAllTags } from '@/lib/posts';
 import PostItem from '@/components/PostItem';
 
 export async function generateStaticParams() {
-    const topics = getAllTopics();
-    return topics.map((topic) => ({
-        tag: topic, // Keep 'tag' as param name for route consistency unless I move the folder
+    const tags = getAllTags();
+    return tags.map((tag) => ({
+        tag: tag,
     }));
 }
 
 export default async function TagPage({ params }: { params: Promise<{ tag: string }> }) {
     const { tag } = await params;
-    const posts = getPostsByTopic(tag);
+    const posts = getPostsByTag(tag);
 
     return (
         <section>
-            <h1>Topic: #{tag}</h1>
+            <h1>Tag: #{tag}</h1>
             <div>
-                {posts.map(({ id, category, tags, field, date, title, description, topic, thumbnail }) => (
+                {posts.map(({ id, category, tags, field, date, title, description, thumbnail }) => (
                     <PostItem
                         key={id}
                         id={id}
@@ -27,7 +27,6 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
                         title={title}
                         description={description}
                         thumbnail={thumbnail}
-                        topic={topic}
                     />
                 ))}
             </div>

@@ -5,7 +5,6 @@ description: "Exploring degron-mediated degradation mechanisms and protein quali
 category: "biology"
 tags: ["biology", "protein", "degron"]
 field: "Biology"
-topic: ["Protein Degradation", "Quality Control"]
 lang: "en"
 translationId: "protein-degron-degradation"
 ---
