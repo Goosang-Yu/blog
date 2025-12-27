@@ -2,6 +2,7 @@
 
 import { PostData } from '@/lib/posts';
 import PostItem from './PostItem';
+import StatsBar from './StatsBar';
 import { useLanguage } from './LanguageContext';
 import { translations } from '@/lib/translations';
 
@@ -16,8 +17,20 @@ export default function HomeClient({ initialPosts, recentComments }: HomeClientP
 
     const filteredPosts = initialPosts.filter(post => post.lang === lang).slice(0, 5);
 
+    // Calculate stats
+    const allCategories = new Set(initialPosts.filter(p => p.lang === lang).map(p => p.category));
+    const latestPost = filteredPosts[0];
+    const lastUpdated = latestPost ? new Date(latestPost.date).toLocaleDateString(lang === 'ko' ? 'ko-KR' : 'en-US', { month: 'short', day: 'numeric' }) : '-';
+
     return (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '4rem' }}>
+            {/* Stats Dashboard */}
+            <StatsBar
+                totalPosts={filteredPosts.length}
+                totalCategories={allCategories.size}
+                lastUpdated={lastUpdated}
+            />
+
             <section>
                 <h1>{t.home.recentPosts}</h1>
                 <div>

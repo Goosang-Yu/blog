@@ -29,28 +29,29 @@
 }
 
 .tagGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .tagCard {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
-    padding: 0.75rem;
+    align-items: flex-start;
+    padding: 0.6rem 1rem;
     background: white;
     border: 1px solid #eee;
-    border-radius: 10px;
+    border-radius: 12px;
     text-decoration: none;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
 }
 
 .tagCard:hover {
     border-color: #0070f3;
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 112, 243, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 112, 243, 0.12);
 }
 
 .tagName {

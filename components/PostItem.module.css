@@ -2,6 +2,11 @@
     margin-bottom: 2.5rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid #eee;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.item:hover {
+    transform: translateY(-4px);
 }
 
 .item:last-child {
@@ -32,15 +37,19 @@
     color: #6c757d;
 }
 
+.readingTime {
+    font-size: 0.85rem;
+    color: #868e96;
+    font-weight: 500;
+}
+
 .fieldBadge {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #0070f3;
-    background: #e1f5fe;
-    border: 1px solid #0070f3;
-    padding: 0.1rem 0.4rem;
-    border-radius: 4px;
+    font-size: 0.70rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none;
 }
 
 .title {
@@ -89,6 +98,21 @@
 
 .thumbnailWrapper:hover .thumbnail {
     transform: scale(1.05);
+}
+
+.tagLink {
+    font-size: 0.8rem;
+    color: #666;
+    text-decoration: none;
+    padding: 0.2rem 0.5rem;
+    border-radius: 8px;
+    background: #f8f9fa;
+    transition: all 0.2s ease;
+}
+
+.tagLink:hover {
+    background: #e9ecef;
+    color: #333;
 }
 
 @media (max-width: 640px) {

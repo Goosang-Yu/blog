@@ -21,7 +21,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
     return (
         <section>
             <h1>Explore: {category}</h1>
-            <p style={{ color: '#666', marginBottom: '2rem' }}>
+            <p style={{ color: '#666', marginBottom: '1rem' }}>
                 {category} 분야의 모든 글을 탐색합니다.
             </p>
 

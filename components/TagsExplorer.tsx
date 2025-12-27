@@ -45,6 +45,15 @@ export default function TagsExplorer({ posts }: TagsExplorerProps) {
         );
     }, [tags, searchQuery]);
 
+    // Calculate font size based on count
+    const getTagSize = (count: number) => {
+        const maxCount = Math.max(...tags.map(t => t.count));
+        const minSize = 0.85;
+        const maxSize = 1.6;
+        const size = minSize + ((count / maxCount) * (maxSize - minSize));
+        return `${size}rem`;
+    };
+
     return (
         <div className={styles.container}>
             <header className={styles.header}>
@@ -63,7 +72,12 @@ export default function TagsExplorer({ posts }: TagsExplorerProps) {
             {filteredTags.length > 0 ? (
                 <div className={styles.tagGrid}>
                     {filteredTags.map((tag) => (
-                        <Link href={`/tags/${tag.name}`} key={tag.name} className={styles.tagCard}>
+                        <Link
+                            href={`/tags/${tag.name}`}
+                            key={tag.name}
+                            className={styles.tagCard}
+                            style={{ fontSize: getTagSize(tag.count) }}
+                        >
                             <span className={styles.tagName}>#{tag.name}</span>
                             <span className={styles.tagCount}>
                                 {tag.count} {t.explorer.tagCount}

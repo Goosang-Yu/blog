@@ -33,10 +33,10 @@ export default function Sidebar() {
                 <span className={styles.categoryLabel}>
                     {t.nav.categories}
                 </span>
-                <Link href="/categories/dev" className={styles.navItem}>Dev</Link>
-                <Link href="/categories/math" className={styles.navItem}>Math</Link>
-                <Link href="/categories/biology" className={styles.navItem}>Biology</Link>
-                <Link href="/categories/cook" className={styles.navItem}>Cook</Link>
+                <Link href="/categories/dev" className={styles.navItem}>💻 Dev</Link>
+                <Link href="/categories/math" className={styles.navItem}>📐 Math</Link>
+                <Link href="/categories/biology" className={styles.navItem}>🧬 Biology</Link>
+                <Link href="/categories/cook" className={styles.navItem}>🍳 Cook</Link>
             </div>
 
             <div className={styles.footer}>

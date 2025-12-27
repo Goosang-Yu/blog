@@ -25,6 +25,10 @@ export interface PostData {
     translationId?: string; // Links translations
     contentHtml?: string;
     headings?: { text: string; id: string; depth: number }[];
+    readingTime?: number; // in minutes
+    series?: string; // Series name
+    seriesOrder?: number; // Order in series
+    featured?: boolean; // Featured post
     [key: string]: any;
 }
 
@@ -74,6 +78,10 @@ export function getSortedPostsData(): PostData[] {
         const fileContents = fs.readFileSync(fullPath, 'utf8');
         const matterResult = matter(fileContents);
 
+        // Calculate reading time
+        const wordCount = matterResult.content.trim().split(/\s+/).length;
+        const readingTime = Math.ceil(wordCount / 200); // 200 words per minute
+
         return {
             id,
             slug,
@@ -83,6 +91,7 @@ export function getSortedPostsData(): PostData[] {
             thumbnail: matterResult.data.thumbnail || extractFirstImage(matterResult.content),
             lang: matterResult.data.lang || 'ko',
             translationId: matterResult.data.translationId || id.split('/').pop(),
+            readingTime,
             ...(matterResult.data as { date: string; title: string }),
         };
     });

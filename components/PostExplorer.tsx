@@ -195,6 +195,7 @@ export default function PostExplorer({
                         title={post.title}
                         description={post.description}
                         thumbnail={post.thumbnail}
+                        readingTime={post.readingTime}
                     />
                 ))
             ) : (
