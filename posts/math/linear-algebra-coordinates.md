@@ -1,10 +1,10 @@
 ---
-title: "선형대수학: 좌표계와 기저 (Coordinate Systems and Basis)"
+title: "좌표계와 기저 (Coordinate Systems and Basis)"
 date: "2025-12-26"
 description: "선형대수학의 핵심 개념인 기저(Basis)와 좌표계(Coordinate Systems)에 대해 정리합니다."
 category: "math"
 tags: ["math", "linear-algebra"]
-field: "수학"
+field: "이론"
 lang: "ko"
 translationId: "linear-algebra-basis"
 ---

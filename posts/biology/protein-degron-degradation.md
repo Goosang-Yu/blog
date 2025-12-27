@@ -1,10 +1,10 @@
 ---
-title: "단백질 분해와 품질 관리: 데그론(Degron)의 역할"
+title: "단백질의 품질 관리: 데그론(Degron)의 역할"
 date: "2025-12-26"
 description: "세포 내 단백질 항상성 유지를 위한 데그론 매개 분해 기전과 품질 관리 시스템에 대해 알아봅니다."
 category: "biology"
-tags: ["biology", "protein", "degron"]
-field: "생물학"
+tags: ["biology", "protein"]
+field: "배경지식"
 lang: "ko"
 translationId: "protein-degron-degradation"
 ---

@@ -1,5 +1,5 @@
-import { getPostsByTag, getAllTags } from '@/lib/posts';
-import PostItem from '@/components/PostItem';
+import { getPostsByTag, getAllTags, getSortedPostsData } from '@/lib/posts';
+import PostExplorer from '@/components/PostExplorer';
 
 export async function generateStaticParams() {
     const tags = getAllTags();
@@ -10,26 +10,31 @@ export async function generateStaticParams() {
 
 export default async function TagPage({ params }: { params: Promise<{ tag: string }> }) {
     const { tag } = await params;
-    const posts = getPostsByTag(tag);
+    const decodedTag = decodeURIComponent(tag);
+
+    // Get all posts for the explorer, so it can filter them by tag AND language
+    const allPosts = getSortedPostsData();
+
+    // We pass all posts, but PostExplorer needs to know which ones match this tag initially
+    // Actually, TagPage should show posts that have THIS tag.
+    const tagSourcePosts = getPostsByTag(decodedTag);
+
+    // Extract available metadata for filters
+    const categories = Array.from(new Set(tagSourcePosts.map(p => p.category))).filter(Boolean) as string[];
+    const fields = Array.from(new Set(tagSourcePosts.map(p => p.field))).filter((f): f is string => Boolean(f));
+    const tags = Array.from(new Set(tagSourcePosts.flatMap(p => p.tags || []))).filter(Boolean) as string[];
 
     return (
         <section>
-            <h1>Tag: #{tag}</h1>
-            <div>
-                {posts.map(({ id, category, tags, field, date, title, description, thumbnail }) => (
-                    <PostItem
-                        key={id}
-                        id={id}
-                        category={category}
-                        tags={tags}
-                        field={field}
-                        date={date}
-                        title={title}
-                        description={description}
-                        thumbnail={thumbnail}
-                    />
-                ))}
-            </div>
+            <PostExplorer
+                allPosts={tagSourcePosts}
+                categories={categories}
+                tags={tags}
+                fields={fields}
+                title={`#${decodedTag}`}
+                description={`Browsing posts tagged with ${decodedTag}`}
+                layout="sidebar"
+            />
         </section>
     );
 }

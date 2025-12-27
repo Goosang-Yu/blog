@@ -1,10 +1,10 @@
 ---
-title: "Linear Algebra: Coordinate Systems and Basis"
+title: "Coordinate Systems and Basis"
 date: "2025-12-26"
 description: "A summary of the core concepts of Linear Algebra: Basis and Coordinate Systems."
 category: "math"
 tags: ["math", "linear-algebra"]
-field: "Mathematics"
+field: "theory"
 lang: "en"
 translationId: "linear-algebra-basis"
 ---

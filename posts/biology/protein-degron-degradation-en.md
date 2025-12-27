@@ -1,10 +1,10 @@
 ---
-title: "Protein Degradation and Quality Control: The Role of Degrons"
+title: "Protein Quality Control: The Role of Degrons"
 date: "2025-12-26"
 description: "Exploring degron-mediated degradation mechanisms and protein quality control systems for cellular homeostasis."
 category: "biology"
-tags: ["biology", "protein", "degron"]
-field: "Biology"
+tags: ["biology", "protein"]
+field: "background"
 lang: "en"
 translationId: "protein-degron-degradation"
 ---

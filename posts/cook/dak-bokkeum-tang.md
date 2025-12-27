@@ -4,7 +4,7 @@ date: "2025-12-26"
 description: "집에서도 전문점 맛을 낼 수 있는 실패 없는 닭볶음탕 요리법을 소개합니다."
 category: "cook"
 tags: ["cook", "korean-food", "chicken"]
-field: "요리"
+field: "레시피"
 lang: "ko"
 translationId: "dak-bokkeum-tang"
 thumbnail: "/images/posts/dak-bokkeum-tang.png"

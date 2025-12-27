@@ -2,62 +2,103 @@
 
 import { useLanguage } from '@/components/LanguageContext';
 import { translations } from '@/lib/translations';
+import SocialLinks from '@/components/SocialLinks';
+import { useEffect, useState } from 'react';
 
-export default function About() {
+export default function AboutPage() {
     const { lang } = useLanguage();
     const t = translations[lang];
+    const [contentHtml, setContentHtml] = useState('');
 
-    if (lang === 'ko') {
-        return (
-            <article>
-                <h1>소개</h1>
-                <p>
-                    안녕하세요! 저는 웹 애플리케이션을 개발하고 새로운 기술을 탐구하는 것에 열정을 가진 개발자입니다.
-                    이 블로그는 저의 학습 여정을 기록하고, 통찰을 공유하며, 제가 마주한 도전 과제들을 되돌아보는 공간입니다.
-                </p>
-                <h2>기술 스택</h2>
-                <ul>
-                    <li>Next.js</li>
-                    <li>TypeScript</li>
-                    <li>React</li>
-                </ul>
-                <h2>{t.about.contact}</h2>
-                <p>
-                    새로운 프로젝트, 창의적인 아이디어, 또는 여러분의 비전에 참여할 기회에 대해 언제든 열려 있습니다.
-                </p>
-                <h2>{t.about.getInTouch}</h2>
-                <ul>
-                    <li><strong>이메일:</strong> <a href="mailto:gsyu93@gmail.com" target="_blank" rel="noopener noreferrer">gsyu93@gmail.com</a></li>
-                    <li><strong>GitHub:</strong> <a href="https://github.com/Goosang-Yu" target="_blank" rel="noopener noreferrer">github.com/Goosang-Yu</a></li>
-                    <li><strong>X (Twitter):</strong> <a href="https://x.com/Goosang_Yu" target="_blank" rel="noopener noreferrer">@Goosang_Yu</a></li>
-                </ul>
-            </article>
-        );
-    }
+    useEffect(() => {
+        async function loadContent() {
+            try {
+                const response = await fetch(`/api/about?lang=${lang}`);
+                const data = await response.json();
+                setContentHtml(data.contentHtml);
+            } catch (error) {
+                console.error('Failed to load about content:', error);
+            }
+        }
+        loadContent();
+    }, [lang]);
 
     return (
-        <article>
-            <h1>About Me</h1>
-            <p>
-                Hello! I am a developer passionate about building web applications and exploring new technologies.
-                This blog is a space where I document my learning journey, share insights, and reflect on the challenges I encounter.
-            </p>
-            <h2>Tech Stack</h2>
-            <ul>
-                <li>Next.js</li>
-                <li>TypeScript</li>
-                <li>React</li>
-            </ul>
-            <h2>{t.about.contact}</h2>
-            <p>
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
-            </p>
-            <h2>{t.about.getInTouch}</h2>
-            <ul>
-                <li><strong>Email:</strong> <a href="mailto:gsyu93@gmail.com" target="_blank" rel="noopener noreferrer">gsyu93@gmail.com</a></li>
-                <li><strong>GitHub:</strong> <a href="https://github.com/Goosang-Yu" target="_blank" rel="noopener noreferrer">github.com/Goosang-Yu</a></li>
-                <li><strong>X (Twitter):</strong> <a href="https://x.com/Goosang_Yu" target="_blank" rel="noopener noreferrer">@Goosang_Yu</a></li>
-            </ul>
-        </article>
+        <section style={{ maxWidth: '800px', paddingBottom: '4rem' }}>
+            <h1 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', fontWeight: 800 }}>{t.about.title}</h1>
+
+            <div style={{ marginBottom: '2rem' }}>
+                <p style={{ fontSize: '1.25rem', lineHeight: '1.8', color: '#333', marginBottom: '0' }}>
+                    {t.about.description}
+                </p>
+            </div>
+
+            {/* CV Download Button */}
+            <div style={{ marginBottom: '3rem' }}>
+                <a
+                    href="/assets/CV_Goosang.pdf"
+                    download
+                    style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.8rem',
+                        padding: '0.8rem 1.6rem',
+                        backgroundColor: '#0070f3',
+                        color: 'white',
+                        borderRadius: '10px',
+                        textDecoration: 'none',
+                        fontSize: '1.1rem',
+                        fontWeight: 600,
+                        boxShadow: '0 4px 14px 0 rgba(0,112,243,0.3)',
+                        transition: 'all 0.2s ease',
+                        cursor: 'pointer'
+                    }}
+                    onMouseOver={(e) => {
+                        e.currentTarget.style.backgroundColor = '#005ed3';
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                        e.currentTarget.style.boxShadow = '0 6px 20px 0 rgba(0,112,243,0.4)';
+                    }}
+                    onMouseOut={(e) => {
+                        e.currentTarget.style.backgroundColor = '#0070f3';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.boxShadow = '0 4px 14px 0 rgba(0,112,243,0.3)';
+                    }}
+                >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    {t.about.downloadCV}
+                </a>
+            </div>
+
+            {/* Contact Section */}
+            <div style={{
+                marginBottom: '3rem',
+                padding: '2rem',
+                background: '#f8f9fa',
+                borderRadius: '12px'
+            }}>
+                <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: '#0070f3' }}>
+                    {t.about.getInTouch}
+                </h2>
+                <p style={{ marginBottom: '1.5rem', color: '#666', fontSize: '1.1rem' }}>
+                    {t.about.contact}
+                </p>
+                <SocialLinks />
+            </div>
+
+            {/* Markdown Content (CV Details) */}
+            <div
+                className="markdown-content"
+                style={{
+                    fontSize: '1.1rem',
+                    lineHeight: '1.8',
+                    color: '#333'
+                }}
+                dangerouslySetInnerHTML={{ __html: contentHtml }}
+            />
+        </section>
     );
 }

@@ -4,7 +4,7 @@ date: "2025-12-26"
 description: "Master the art of making the perfect Korean spicy chicken stew at home with this foolproof recipe."
 category: "cook"
 tags: ["cook", "korean-food", "chicken"]
-field: "Cooking"
+field: "recipe"
 lang: "en"
 translationId: "dak-bokkeum-tang"
 thumbnail: "/images/posts/dak-bokkeum-tang.png"
