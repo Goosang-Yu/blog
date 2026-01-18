@@ -7,16 +7,16 @@ tags: ["cook", "korean-food", "chicken"]
 field: "레시피"
 lang: "ko"
 translationId: "gcova_chicken"
-thumbnail: "/images/posts/gcova_chicken_4.png"
+thumbnail: "/images/posts/gcova_chicken_4.jpg"
 ---
 
 비교적 저렴한 닭고기를 이용해서 집에서 해먹는 지코바 치킨 맛을 낼 수 있는 레시피. 양념소스는 진짜 판매용 양념치킨의 맛이 난다..!
 
-![지코바치킨](/images/posts/gcova_chicken_4.png)
+![지코바치킨](/images/posts/gcova_chicken_4.jpg)
 
 ## 1. 재료 준비
 
-![닭고기](/images/posts/gcova_chicken_1.png)
+![닭고기](/images/posts/gcova_chicken_1.jpg)
 
 닭고기는 Amazon에서 구입한 순살 닭가슴살을 사용했다. 하지만 다른 부위를 사용해도 전혀 문제 없음.
 
@@ -29,7 +29,7 @@ thumbnail: "/images/posts/gcova_chicken_4.png"
 ### 1) 닭고기 굽기
 팬에 기름을 두루고, 닭고기를 넣고 중불 (인덕션 기준 5-6)에서 구워준다. 이때, 닭고기를 좀 더 작게 조각내서 잘라주면 속까지 잘 읽고 한입에 먹기도 좋다. 
 
-![닭구이](/images/posts/gcova_chicken_2.png)
+![닭구이](/images/posts/gcova_chicken_2.jpg)
 
 ### 2) 양념 만들기
 양념장 재료들을 그릇에 넣고 잘 섞어준다. 

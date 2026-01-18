@@ -7,12 +7,12 @@ tags: ["cook", "maxican-food", "beef"]
 field: "레시피"
 lang: "ko"
 translationId: "burrito"
-thumbnail: "/images/posts/burrito_1.png"
+thumbnail: "/images/posts/burrito_1.jpg"
 ---
 
 부리토(burrito)는 멕시코의 길거리 음식으로 토르티야에 고기, 옥수수, 야채, 고수 등을 얹어 둥글게 감싼 요리이다. 타바스코 소스, 살사 소스를 곁들여서 먹기도 한다.
 
-![burrito_pic](/images/posts/burrito_1.png)
+![burrito_pic](/images/posts/burrito_1.jpg)
 
 ## 1. 재료 준비
 
@@ -25,21 +25,21 @@ thumbnail: "/images/posts/burrito_1.png"
 2.	다진 소고기 400g에 양념을 넣어서 잘 버무려서 재운다. 
 3.	양파 (1/2), 파(4개), 파프리카 (1/2), 당근 (1/2)을 잘게 잘라준다. 양상추 (1/2)는 채 썰어준다. 마늘(6쪽)은 다져준다.
 
-![burrito_step3](/images/posts/burrito_2.png)
+![burrito_step3](/images/posts/burrito_2.jpg)
 
 4.	후라이팬에 올리브유를 2큰술 두르고, 중불에서 소고기와 다진 마늘, 당근을 넣고 익혀준다. 고기가 살짝 익었다면, 양파, 파, 파프리카를 추가로 넣어준다. 익히다보면 물이 많이 나오는데, 중간에 한번 버려준다. 고기는 뭉치지 않게, 계속 섞어주면서 잘게 풀어준다.
 
-![burrito_step4](/images/posts/burrito_3.png)
+![burrito_step4](/images/posts/burrito_3.jpg)
 
 5.	고기가 다 익었다면 토마토 파스타 소스를 1/3통 넣어주고, 물기가 거의 없어서 고기가 촉촉한 느낌만 남을 때까지 익혀준다. 물기가 많이 날아갔다면, 잠시 식혀준다. 
 6.	사워크림 8스푼에 올리고당 3큰술, 레몬청 3큰술을 넣고 소스를 만들어준다.
 7.	또르띠아에 사워크림을 1큰술 펴 발라준 후, 체다치즈를 고기 속, 체다치즈, 양상추를 넣어준다. 
 
-![burrito_step7](/images/posts/burrito_4.png)
+![burrito_step7](/images/posts/burrito_4.jpg)
 
 8.	또르띠아를 잘 말아준 후, 팬에 표면을 구워준다. 
 
-![burrito_step8](/images/posts/burrito_5.png)
+![burrito_step8](/images/posts/burrito_5.jpg)
 
 ### 대량으로 밀프렙해서 간단하게 먹기
 다진 소고기 2팩 (2Lb)를 전부 사용해서 만들면, 약 16개의 부리또를 만들 수 있다. 이걸 냉동으로 얼렸다가 먹고 싶을 때 전자레인지로 1분 정도 뎁혀서 먹으면 간단하게 먹을 수 있다.
