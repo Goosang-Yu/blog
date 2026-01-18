@@ -7,16 +7,16 @@ tags: ["cook", "korean-food", "chicken"]
 field: "Recipe"
 lang: "en"
 translationId: "gcova_chicken"
-thumbnail: "/images/posts/gcova_chicken_4.png"
+thumbnail: "/images/posts/gcova_chicken_4.jpg"
 ---
 
 A recipe that recreates the taste of Gcova chicken at home using relatively affordable chicken. The sauce tastes just like real commercial Korean fried chicken sauce!
 
-![Gcova Chicken](/images/posts/gcova_chicken_4.png)
+![Gcova Chicken](/images/posts/gcova_chicken_4.jpg)
 
 ## 1. Ingredients
 
-![Chicken](/images/posts/gcova_chicken_1.png)
+![Chicken](/images/posts/gcova_chicken_1.jpg)
 
 I used boneless chicken tendorloins purchased from Amazon. However, any other chicken parts work perfectly fine.
 
@@ -29,7 +29,7 @@ I used boneless chicken tendorloins purchased from Amazon. However, any other ch
 ### 1) Grilling the Chicken
 Add oil to the pan, add the chicken, and cook over medium heat (5-6 on induction). At this point, cutting the chicken into smaller pieces helps it cook through and makes it easier to eat in one bite.
 
-![Grilled Chicken](/images/posts/gcova_chicken_2.png)
+![Grilled Chicken](/images/posts/gcova_chicken_2.jpg)
 
 ### 2) Making the Sauce
 Mix all the sauce ingredients in a bowl.
