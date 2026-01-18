@@ -32,7 +32,7 @@ export const translations = {
             description: '안녕하세요, 유구상(Goosang Yu)입니다. 유전자 교정, 고효율 유전자 스크리닝, 멀티오믹스, 그리고 기계학습을 활용한 생물정보학 연구를 수행하고 있습니다.',
             downloadCV: 'CV 다운로드',
             getInTouch: '연락처',
-            contact: '문의하기'
+            contact: 'gsyu93@gmail.com'
         },
         footer: {
             copyright: '© 2025 Goosang. All rights reserved.'
@@ -71,7 +71,7 @@ export const translations = {
             description: 'Hi, I am Goosang Yu, a Ph.D. researcher focusing on genome editing, high-throughput screening, multi-omics, and machine learning-driven bioinformatics.',
             downloadCV: 'Download CV',
             getInTouch: 'Get in Touch',
-            contact: 'Contact'
+            contact: 'gsyu93@gmail.com'
         },
         footer: {
             copyright: '© 2025 Goosang. All rights reserved.'
